@@ -9,15 +9,13 @@ services:
 
     prodigious_sonata_menu.repo:
         class: Prodigious\Sonata\MenuBundle\Repository\MenuRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
+        factory: doctrine.orm.entity_manager:getRepository
         arguments:
             - Prodigious\Sonata\MenuBundle\Entity\Menu
     
     prodigious_sonata_menu_item.repo:
         class: Prodigious\Sonata\MenuBundle\Repository\MenuItemRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
+        factory: doctrine.orm.entity_manager:getRepository
         arguments:
             - Prodigious\Sonata\MenuBundle\Entity\MenuItem
     
