@@ -6,10 +6,12 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Prodigious\Sonata\MenuBundle\Entity\MenuItem;
 use Prodigious\Sonata\MenuBundle\Entity\MenuItemInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class MenuItemAdmin extends AbstractAdmin
 {
@@ -43,7 +45,7 @@ class MenuItemAdmin extends AbstractAdmin
 
         $formMapper
             ->with('config.label_menu_item', array('class' => 'col-md-6', 'translation_domain' => 'ProdigiousSonataMenuBundle'))
-                ->add('name', 'text',
+                ->add('name', TextType::class,
                     array(
                         'label' => 'config.label_name'
                     ),
@@ -51,7 +53,7 @@ class MenuItemAdmin extends AbstractAdmin
                         'translation_domain' => 'ProdigiousSonataMenuBundle'
                     )
                 )
-                ->add('parent', 'sonata_type_model',
+                ->add('parent', ModelType::class,
                     array(
                         'label' => 'config.label_parent',
                         'required' => false,
@@ -62,7 +64,7 @@ class MenuItemAdmin extends AbstractAdmin
                         'translation_domain' => 'ProdigiousSonataMenuBundle'
                     )
                 )
-                ->add('classAttribute', 'text',
+                ->add('classAttribute', TextType::class,
                     array(
                         'label' => 'config.label_class_attribute',
                         'required' => false,
@@ -84,7 +86,7 @@ class MenuItemAdmin extends AbstractAdmin
             ->end()
 
             ->with('config.label_menu_link', array('class' => 'col-md-6', 'translation_domain' => 'ProdigiousSonataMenuBundle'))
-                ->add('menu', 'sonata_type_model',
+                ->add('menu', ModelType::class,
                     array(
                         'label' => 'config.label_menu',
                         'required' => false,
@@ -146,7 +148,7 @@ class MenuItemAdmin extends AbstractAdmin
 
         $formMapper
             ->with('config.label_menu_link', array('class' => 'col-md-6', 'translation_domain' => 'ProdigiousSonataMenuBundle'))
-                ->add('url', 'text', 
+                ->add('url', TextType::class,
                     array(
                         'label' => 'config.label_custom_url',
                         'required' => false,
